@@ -17,7 +17,7 @@ public class ThreeSum
         System.out.println("enter the sum");
         int sum=sc.nextInt();
 
-        Set<List<Integer>>but=brutee(arr,n,sum);
+      //  Set<List<Integer>>but=brutee(arr,n,sum);
       /*  System.err.println(but);
 
         for(List<Integer> l1:but)
@@ -44,8 +44,68 @@ public class ThreeSum
             */ 
 
 
-        List<List<Integer>> b1=better(arr,n,sum);
-        System.out.println(b1);
+      //  List<List<Integer>> b1=better(arr,n,sum);
+     //   System.out.println(b1);
+
+     optimal(arr,n,sum);
+
+
+    }
+
+
+    public static void optimal(int[] arr,int n,int tg)
+    {
+        //int i=0;
+       // int sum=0;
+       // int sum1=0;
+       Arrays.sort(arr);
+        ArrayList<List<Integer>> a1=new ArrayList<>();
+        for(int i=0;i<n-2;i++)
+        {
+
+           //  int sum=0;
+          if(i>0 && arr[i-1]==arr[i])
+            continue;
+             
+          int j=i+1,k=n-1;
+          while(j<k)
+          {
+             int sum=arr[i]+arr[j]+arr[k];
+             if(sum>tg)
+             {
+                k--;
+             }
+             else if(sum<tg)
+             {
+                j++;
+             }
+             else
+             {
+                List<Integer> l1=new ArrayList<>();
+                l1.add(arr[i]);
+                l1.add(arr[j]);
+                l1.add(arr[k]);
+
+                a1.add(l1);
+                j++;
+                k--;
+             }
+             while(j<k && arr[j]==arr[j-1])
+             {
+                j++;
+             }
+             while(j<k && arr[k]==arr[k+1])
+             {
+                k--;
+             }
+
+          }
+         
+
+
+        }
+         System.err.println(a1);
+
 
     }
 
